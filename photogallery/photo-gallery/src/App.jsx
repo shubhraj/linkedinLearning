@@ -32,6 +32,8 @@ const handleOnChange = (e) => {
 const handleOnSubmit = (e) => {
   e.preventDefault();
   setItems([inputs.path, ...items]);
+  setInputs({title: null, file: null, path: null});
+  collapse(false);
 }
 
 useEffect(()=>{
@@ -44,7 +46,7 @@ useEffect(()=>{
       <div className="container text-center mt-5">
         <button className="btn btn-success float-end" onClick={toggle}>{isCollapsed ? "Close" : "+ Add"}</button>
         <div className="clearfix mb-4"></div>
-        <UploadForm isVisible={isCollapsed} onChange={handleOnChange} onSubmit={handleOnSubmit}/>
+        <UploadForm isVisible={isCollapsed} onChange={handleOnChange} onSubmit={handleOnSubmit} inputs={inputs}/>
         {count}
         <h1>Gallery</h1>
         <div className="row">
